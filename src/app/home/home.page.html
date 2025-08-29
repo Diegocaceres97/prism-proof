@@ -14,16 +14,16 @@
   </ion-header>
 
   <div style="padding: 16px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-    <ion-button (click)="demoLogin()" [disabled]="loading">Login</ion-button>
-    <ion-button (click)="demoListProducts()" [disabled]="loading || !token">Listar productos</ion-button>
-    <span *ngIf="token">Token listo</span>
-    <ion-spinner *ngIf="loading"></ion-spinner>
+    <ion-button (click)="demoLogin()" [disabled]="loading()">Login</ion-button>
+    <ion-button (click)="demoListProducts()" [disabled]="loading() || !token()">Listar productos</ion-button>
+    <span *ngIf="token()">Token listo</span>
+    <ion-spinner *ngIf="loading()"></ion-spinner>
   </div>
 
-  <div style="padding: 0 16px; color: var(--ion-color-danger);" *ngIf="error">{{ error }}</div>
+  <div style="padding: 0 16px; color: var(--ion-color-danger);" *ngIf="error()">{{ error() }}</div>
 
-  <ion-list *ngIf="products.length" inset>
-    <ion-item *ngFor="let p of products">
+  <ion-list *ngIf="products().length" inset>
+    <ion-item *ngFor="let p of products()">
       <ion-label>
         <div style="display:flex; justify-content: space-between; gap: 8px;">
           <strong>{{ p.name }}</strong>
