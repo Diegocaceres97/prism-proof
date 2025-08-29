@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Mock API Demo
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,29 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Mock API Demo</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div style="padding: 16px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+    <ion-button (click)="demoLogin()" [disabled]="loading">Login</ion-button>
+    <ion-button (click)="demoListProducts()" [disabled]="loading || !token">Listar productos</ion-button>
+    <span *ngIf="token">Token listo</span>
+    <ion-spinner *ngIf="loading"></ion-spinner>
   </div>
+
+  <div style="padding: 0 16px; color: var(--ion-color-danger);" *ngIf="error">{{ error }}</div>
+
+  <ion-list *ngIf="products.length" inset>
+    <ion-item *ngFor="let p of products">
+      <ion-label>
+        <div style="display:flex; justify-content: space-between; gap: 8px;">
+          <strong>{{ p.name }}</strong>
+          <span>${{ p.price }}</span>
+        </div>
+        <div style="opacity: 0.7; font-size: 12px;">{{ p.description }}</div>
+        <div style="opacity: 0.6; font-size: 11px;">ID: {{ p.id }}</div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
