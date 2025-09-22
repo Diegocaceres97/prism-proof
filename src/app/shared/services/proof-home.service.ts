@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { AuthResponse, Product } from '../interfaces/proof-homre.interface';
+import { AuthResponse, Product } from '../interfaces/proof-home.interface';
 
 @Injectable({
   providedIn: 'root'
