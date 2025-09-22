@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonList, IonItem, IonLabel, IonSpinner } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
-import { ProofHomeService } from '../shared/services/proof-home.service';
+import { HomePresenter } from './home.presenter';
 
 @Component({
   selector: 'app-home',
@@ -12,19 +12,21 @@ import { ProofHomeService } from '../shared/services/proof-home.service';
 })
 export class HomePage {
 
-  injectProofService = inject(ProofHomeService);
-  loading = this.injectProofService.loading;
-  error = this.injectProofService.error;
-  token = this.injectProofService.token;
-  products = this.injectProofService.products;
+  presenter = inject(HomePresenter);
+
+  // Expose presenter signals to template
+  loading = this.presenter.loading;
+  error = this.presenter.error;
+  token = this.presenter.token;
+  products = this.presenter.products;
 
   async demoLogin() {
     console.log('demoLogin');
-    await this.injectProofService.login();
-    console.log('demoLogin', this.token);
+    await this.presenter.login();
+    console.log('demoLogin completed, token:', this.token());
   }
 
   async demoListProducts() {
-    await this.injectProofService.getAllProducts();
+    await this.presenter.loadProducts();
   }
 }
