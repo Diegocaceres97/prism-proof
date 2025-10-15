@@ -1,0 +1,127 @@
+ion-header {
+  ion-toolbar {
+    --background: white;
+    --border-color: var(--ion-color-light-shade);
+  }
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--ion-color-dark);
+  text-align: left;
+  margin-left: -70px;
+}
+
+ion-content {
+  --background: var(--ion-color-light);
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 16px;
+
+  ion-spinner {
+    width: 32px;
+    height: 32px;
+  }
+
+  ion-text {
+    font-size: 14px;
+  }
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 16px;
+  text-align: center;
+
+  ion-text {
+    font-size: 16px;
+  }
+}
+
+.products-container {
+  padding-bottom: 20px;
+}
+
+.products-grid {
+  padding: 8px;
+
+  ion-col {
+    padding: 4px;
+  }
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+
+  h3 {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.7;
+  }
+}
+
+.bottom-spacing {
+  height: 80px; // Space for bottom navigation
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  ion-header {
+    ion-toolbar {
+      --background: var(--ion-color-dark);
+      --border-color: var(--ion-color-dark-shade);
+    }
+  }
+
+  .page-title {
+    color: var(--ion-color-light);
+  }
+
+  ion-content {
+    --background: var(--ion-color-dark-tint);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 32px;
+  }
+
+  .products-grid {
+    padding: 4px;
+
+    ion-col {
+      padding: 2px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .products-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}

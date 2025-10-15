@@ -1,0 +1,18 @@
+<ion-tab-bar class="bottom-navigation">
+  <ion-tab-button
+    *ngFor="let tab of tabs"
+    [class.active]="isActive(tab.key)"
+    (click)="onTabClick(tab)">
+
+    <ion-icon
+      [name]="isActive(tab.key) ? tab.activeIcon : tab.icon"
+      [color]="isActive(tab.key) ? 'dark' : 'white'">
+    </ion-icon>
+
+    <ion-label
+      [color]="isActive(tab.key) ? 'dark' : 'white'">
+      {{ tab.label }}
+    </ion-label>
+
+  </ion-tab-button>
+</ion-tab-bar>

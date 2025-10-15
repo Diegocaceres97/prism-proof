@@ -1,0 +1,82 @@
+.quantity-selector {
+  margin: 16px 0;
+}
+
+.quantity-label {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: var(--ion-color-dark);
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.quantity-btn {
+  --border-radius: 50%;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  width: 40px;
+  height: 40px;
+  --border: 1px solid var(--ion-color-medium);
+  --color: var(--ion-color-dark);
+
+  &:disabled {
+    --color: var(--ion-color-light);
+    --border-color: var(--ion-color-light);
+    opacity: 0.5;
+  }
+
+  ion-icon {
+    font-size: 18px;
+  }
+}
+
+.quantity-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ion-color-dark);
+  min-width: 24px;
+  text-align: center;
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .quantity-label {
+    color: var(--ion-color-light);
+  }
+
+  .quantity-value {
+    color: var(--ion-color-light);
+  }
+
+  .quantity-btn {
+    --color: var(--ion-color-light);
+    --border-color: var(--ion-color-medium);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .quantity-controls {
+    gap: 12px;
+  }
+
+  .quantity-btn {
+    width: 36px;
+    height: 36px;
+
+    ion-icon {
+      font-size: 16px;
+    }
+  }
+
+  .quantity-value {
+    font-size: 16px;
+  }
+}

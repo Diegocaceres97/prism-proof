@@ -1,0 +1,39 @@
+<ion-card class="product-card" (click)="onCardClick()">
+  <div class="product-image-container">
+    <img
+      [src]="product().imageUrl"
+      [alt]="product().name"
+      class="product-image"
+      loading="lazy">
+
+    <ion-button
+      fill="clear"
+      class="favorite-btn"
+      [class.favorited]="isFavorite()"
+      (click)="onFavoriteClick($event)">
+      <ion-icon
+        [name]="isFavorite() ? 'heart' : 'heart-outline'"
+        [color]="isFavorite() ? 'danger' : 'medium'">
+      </ion-icon>
+    </ion-button>
+
+    <div *ngIf="hasDiscount" class="discount-badge">
+      -{{ product().discount }}%
+    </div>
+  </div>
+
+  <ion-card-content class="product-info">
+    <h3 class="product-name">{{ product().name }}</h3>
+
+    <div class="price-container">
+      <span class="current-price" style="color: #808080;">${{ product().price }}</span>
+      <span
+        *ngIf="product().originalPrice"
+        class="original-price">
+        ${{ product().originalPrice }}
+      </span>
+    </div>
+
+
+  </ion-card-content>
+</ion-card>

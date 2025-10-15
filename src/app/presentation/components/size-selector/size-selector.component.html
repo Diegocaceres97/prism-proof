@@ -1,0 +1,12 @@
+<div class="size-selector">
+  <h4 class="size-label">Size</h4>
+  <div class="size-buttons">
+    <ion-button
+      *ngFor="let size of sizes()"
+      [class.selected]="isSelected(size)"
+      (click)="onSizeSelect(size)"
+      class="size-button">
+      {{ size }}
+    </ion-button>
+  </div>
+</div>

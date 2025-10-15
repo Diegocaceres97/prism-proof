@@ -1,0 +1,106 @@
+<ion-header [translucent]="true" class="hidden-header">
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="login-container">
+    <!-- Header Section -->
+    <div class="login-header">
+      <h1 class="login-title">Login to your account</h1>
+      <p class="login-subtitle">It's great to see you again.</p>
+    </div>
+
+    <!-- Form Section -->
+    <div class="login-form">
+      <!-- Email Field -->
+      <div class="input-group">
+        <label class="input-label">Email</label>
+        <ion-input
+          type="email"
+          placeholder="Enter your email address"
+          [value]="email()"
+          (ionInput)="onEmailChange($event)"
+          class="custom-input">
+        </ion-input>
+      </div>
+
+      <!-- Password Field -->
+      <div class="input-group">
+        <label class="input-label">Password</label>
+        <ion-input
+          [type]="showPassword() ? 'text' : 'password'"
+          placeholder="Enter your password"
+          [value]="password()"
+          (ionInput)="onPasswordChange($event)"
+          class="custom-input">
+          <ion-button
+            slot="end"
+            fill="clear"
+            class="password-toggle"
+            (click)="togglePasswordVisibility()">
+            <ion-icon
+              [name]="showPassword() ? 'eye-off' : 'eye'"
+              color="medium">
+            </ion-icon>
+          </ion-button>
+        </ion-input>
+      </div>
+
+      <!-- Forgot Password Link -->
+      <div class="forgot-password">
+        <span class="forgot-text">Forgot your password?</span>
+        <a href="#" class="reset-link" (click)="onForgotPassword()">Reset your password</a>
+      </div>
+
+      <!-- Login Button -->
+      <ion-button
+        expand="block"
+        class="login-btn"
+        (click)="onLogin()"
+        [disabled]="loading()">
+        {{ loading() ? 'Logging in...' : 'Login' }}
+      </ion-button>
+
+      <!-- Error Message -->
+      <div *ngIf="error()" class="error-message">
+        <ion-text color="danger">{{ error() }}</ion-text>
+      </div>
+
+      <!-- Separator -->
+      <div class="separator">
+        <div class="separator-line"></div>
+        <span class="separator-text">Or</span>
+        <div class="separator-line"></div>
+      </div>
+
+      <!-- Social Login Buttons -->
+      <div class="social-login">
+        <ion-button
+          expand="block"
+          fill="outline"
+          class="social-btn google-btn"
+          (click)="onGoogleLogin()">
+          <ion-icon name="logo-google" slot="start"></ion-icon>
+          Login with Google
+        </ion-button>
+
+        <ion-button
+          expand="block"
+          fill="outline"
+          class="social-btn apple-btn"
+          (click)="onAppleLogin()">
+          <ion-icon name="logo-apple" slot="start"></ion-icon>
+          Login with Apple
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="login-footer">
+      <span class="signup-text">Don't have an account?</span>
+      <a href="#" class="signup-link" (click)="onSignUp()">Join</a>
+    </div>
+  </div>
+</ion-content>

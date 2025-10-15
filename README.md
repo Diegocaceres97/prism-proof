@@ -211,3 +211,9 @@ Recomendación: ejecutar 3 corridas por escenario y promediar; registrar hardwar
 - Puerto ocupado: cambia `--port`.
 - Emuladores: usa el host correcto (`10.0.2.2` en Android Emulator).
 - Certificados/HTTPS: para desarrollo usa HTTP; para HTTPS local considera proxies (e.g., mkcert + reverse proxy).
+
+---
+
+### 9) Figma (guia visual)
+- Link: https://www.figma.com/design/QeR1CsmwJLcbkdsGBMyaRG/Ecommerce-App-UI-Kit--Freebie---Community-?node-id=0-1&p=f&t=uFh4YgaiFoVSYXYK-0
+

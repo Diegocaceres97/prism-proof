@@ -1,0 +1,15 @@
+<div class="category-filter-container">
+  <ion-segment
+    [value]="selectedCategory()"
+    (ionChange)="onCategoryChange($event)"
+    class="category-segment">
+
+    <ion-segment-button
+      *ngFor="let category of categories"
+      [value]="category.value"
+      class="category-button">
+      <ion-label>{{ category.label }}</ion-label>
+    </ion-segment-button>
+
+  </ion-segment>
+</div>

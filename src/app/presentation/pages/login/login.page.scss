@@ -1,0 +1,287 @@
+.hidden-header {
+  display: none;
+}
+
+.login-content {
+  --background: #ffffff;
+}
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.login-header {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.login-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.login-subtitle {
+  font-size: 16px;
+  color: #666666;
+  margin: 0;
+  font-weight: 400;
+}
+
+.login-form {
+  margin-bottom: 40px;
+}
+
+.input-group {
+  margin-bottom: 24px;
+}
+
+.input-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.custom-input {
+  --background: #ffffff;
+  --border-color: #e0e0e0;
+  --border-width: 1px;
+  --border-style: solid;
+  --border-radius: 8px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  --color: #000000;
+  --placeholder-color: #999999;
+  font-size: 16px;
+  height: 56px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+
+  &:focus-within {
+    --border-color: #000000;
+    border-color: #000000;
+  }
+}
+
+.password-toggle {
+  --color: #666666;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  margin: 0;
+  height: auto;
+}
+
+.forgot-password {
+  text-align: left;
+  margin-bottom: 32px;
+  font-size: 14px;
+}
+
+.forgot-text {
+  color: #666666;
+}
+
+.reset-link {
+  color: #000000;
+  text-decoration: underline;
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+.login-btn {
+  --background: #000000;
+  --color: #ffffff;
+  --border-radius: 8px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  height: 56px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: none;
+  margin-bottom: 24px;
+  transition: all 0.2s ease;
+
+  &:hover:not([disabled]) {
+    --background: #333333;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  &:disabled {
+    --background: #cccccc;
+    --color: #666666;
+  }
+}
+
+.error-message {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  margin: 32px 0;
+  gap: 16px;
+}
+
+.separator-line {
+  flex: 1;
+  height: 1px;
+  background-color: #e0e0e0;
+}
+
+.separator-text {
+  color: #999999;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-btn {
+  --border-color: #e0e0e0;
+  --color: #000000;
+  --border-radius: 8px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  height: 56px;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    --border-color: #000000;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  ion-icon {
+    font-size: 20px;
+    margin-right: 8px;
+  }
+}
+
+.google-btn {
+  --background: #ffffff;
+}
+
+.apple-btn {
+  --background: #ffffff;
+}
+
+.login-footer {
+  text-align: center;
+  font-size: 14px;
+  color: #666666;
+}
+
+.signup-text {
+  color: #666666;
+}
+
+.signup-link {
+  color: #000000;
+  text-decoration: underline;
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+// Responsive design
+@media (max-width: 480px) {
+  .login-container {
+    padding: 16px;
+  }
+
+  .login-title {
+    font-size: 30px;
+  }
+
+  .login-subtitle {
+    font-size: 14px;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .login-content {
+    --background: #000000;
+  }
+
+  .login-title {
+    color: #ffffff;
+  }
+
+  .login-subtitle {
+    color: #cccccc;
+  }
+
+  .input-label {
+    color: #ffffff;
+  }
+
+  .custom-input {
+    --background: #1a1a1a;
+    --border-color: #333333;
+    --color: #ffffff;
+    --placeholder-color: #666666;
+    border-color: #333333;
+
+    &:focus-within {
+      --border-color: #ffffff;
+      border-color: #ffffff;
+    }
+  }
+
+  .forgot-text {
+    color: #cccccc;
+  }
+
+  .reset-link {
+    color: #ffffff;
+  }
+
+  .separator-line {
+    background-color: #333333;
+  }
+
+  .separator-text {
+    color: #666666;
+  }
+
+  .social-btn {
+    --background: #1a1a1a;
+    --border-color: #333333;
+    --color: #ffffff;
+
+    &:hover {
+      --border-color: #ffffff;
+    }
+  }
+
+  .signup-text {
+    color: #cccccc;
+  }
+
+  .signup-link {
+    color: #ffffff;
+  }
+}

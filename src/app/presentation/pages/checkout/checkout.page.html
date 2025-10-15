@@ -1,0 +1,302 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onGoBack()">
+        <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Checkout</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="checkout-content">
+  <div *ngIf="loading()" class="loading-container">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+    <ion-text color="medium">Loading checkout...</ion-text>
+  </div>
+
+  <div *ngIf="error() && !loading()" class="error-container">
+    <ion-text color="danger">{{ error() }}</ion-text>
+    <ion-button fill="outline" (click)="presenter.loadCart('user-123')">
+      Try Again
+    </ion-button>
+  </div>
+
+  <div *ngIf="!loading() && !error()">
+    <div *ngIf="hasItems(); else emptyCart" class="checkout-container">
+
+      <!-- Shipping Information -->
+      <ion-card class="info-card">
+        <ion-card-content>
+          <ion-text class="section-title">Shipping Information</ion-text>
+
+          <div class="form-group">
+            <ion-text class="input-label">Email Address *</ion-text>
+            <ion-input
+              mode="md"
+              fill="outline"
+              type="email"
+              placeholder="Enter your email"
+              [value]="email()"
+              (ionInput)="onEmailChange($event)">
+            </ion-input>
+          </div>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6">
+                <div class="form-group">
+                  <ion-text class="input-label">First Name *</ion-text>
+                  <ion-input
+                    mode="md"
+                    fill="outline"
+                    placeholder="First name"
+                    [value]="firstName()"
+                    (ionInput)="onFirstNameChange($event)">
+                  </ion-input>
+                </div>
+              </ion-col>
+              <ion-col size="6">
+                <div class="form-group">
+                  <ion-text class="input-label">Last Name *</ion-text>
+                  <ion-input
+                    mode="md"
+                    fill="outline"
+                    placeholder="Last name"
+                    [value]="lastName()"
+                    (ionInput)="onLastNameChange($event)">
+                  </ion-input>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <div class="form-group">
+            <ion-text class="input-label">Address *</ion-text>
+            <ion-input
+              mode="md"
+              fill="outline"
+              placeholder="Street address"
+              [value]="address()"
+              (ionInput)="onAddressChange($event)">
+            </ion-input>
+          </div>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6">
+                <div class="form-group">
+                  <ion-text class="input-label">City *</ion-text>
+                  <ion-input
+                    mode="md"
+                    fill="outline"
+                    placeholder="City"
+                    [value]="city()"
+                    (ionInput)="onCityChange($event)">
+                  </ion-input>
+                </div>
+              </ion-col>
+              <ion-col size="3">
+                <div class="form-group">
+                  <ion-text class="input-label">ZIP Code *</ion-text>
+                  <ion-input
+                    mode="md"
+                    fill="outline"
+                    placeholder="ZIP"
+                    [value]="zipCode()"
+                    (ionInput)="onZipCodeChange($event)">
+                  </ion-input>
+                </div>
+              </ion-col>
+              <ion-col size="3">
+                <div class="form-group">
+                  <ion-text class="input-label">Country *</ion-text>
+                  <ion-input
+                    mode="md"
+                    fill="outline"
+                    placeholder="Country"
+                    [value]="country()"
+                    (ionInput)="onCountryChange($event)">
+                  </ion-input>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <div class="form-group">
+            <ion-text class="input-label">Phone Number *</ion-text>
+            <ion-input
+              mode="md"
+              fill="outline"
+              type="tel"
+              placeholder="Phone number"
+              [value]="phone()"
+              (ionInput)="onPhoneChange($event)">
+            </ion-input>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Payment Information -->
+      <ion-card class="info-card">
+        <ion-card-content>
+          <ion-text class="section-title">Payment Method</ion-text>
+
+          <ion-select
+            [value]="paymentMethod()"
+            (ionChange)="onPaymentMethodChange($event)"
+            placeholder="Select payment method"
+            class="payment-select">
+            <ion-select-option value="card">
+              <ion-icon name="card"></ion-icon>
+              Credit/Debit Card
+            </ion-select-option>
+            <ion-select-option value="paypal">
+              <ion-icon name="logo-paypal"></ion-icon>
+              PayPal
+            </ion-select-option>
+            <ion-select-option value="apple_pay">
+              <ion-icon name="logo-apple"></ion-icon>
+              Apple Pay
+            </ion-select-option>
+          </ion-select>
+
+          <!-- Card Details (only show if card is selected) -->
+          <div *ngIf="paymentMethod() === 'card'" class="card-details">
+            <div class="form-group">
+              <ion-text class="input-label">Card Number *</ion-text>
+              <ion-input
+                mode="md"
+                fill="outline"
+                placeholder="1234 5678 9012 3456"
+                [value]="cardNumber()"
+                (ionInput)="onCardNumberChange($event)">
+              </ion-input>
+            </div>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6">
+                  <div class="form-group">
+                    <ion-text class="input-label">Expiry Date *</ion-text>
+                    <ion-input
+                      mode="md"
+                      fill="outline"
+                      placeholder="MM/YY"
+                      [value]="expiryDate()"
+                      (ionInput)="onExpiryDateChange($event)">
+                    </ion-input>
+                  </div>
+                </ion-col>
+                <ion-col size="3">
+                  <div class="form-group">
+                    <ion-text class="input-label">CVV *</ion-text>
+                    <ion-input
+                      mode="md"
+                      fill="outline"
+                      placeholder="123"
+                      [value]="cvv()"
+                      (ionInput)="onCvvChange($event)">
+                    </ion-input>
+                  </div>
+                </ion-col>
+                <ion-col size="3">
+                  <div class="form-group">
+                    <ion-text class="input-label">Name on Card *</ion-text>
+                    <ion-input
+                      mode="md"
+                      fill="outline"
+                      placeholder="John Doe"
+                      [value]="cardName()"
+                      (ionInput)="onCardNameChange($event)">
+                    </ion-input>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+
+          <!-- PayPal/Apple Pay Info -->
+          <div *ngIf="paymentMethod() === 'paypal'" class="payment-info">
+            <ion-text color="medium">You will be redirected to PayPal to complete your payment.</ion-text>
+          </div>
+
+          <div *ngIf="paymentMethod() === 'apple_pay'" class="payment-info">
+            <ion-text color="medium">You will be redirected to Apple Pay to complete your payment.</ion-text>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Order Summary -->
+      <ion-card class="order-summary-card">
+        <ion-card-content>
+          <ion-text class="section-title">Order Summary</ion-text>
+
+          <!-- Cart Items -->
+          <div *ngFor="let item of cart()?.items" class="order-item">
+            <ion-grid>
+              <ion-row class="ion-align-items-center">
+                <ion-col size="3">
+                  <img [src]="item.product.imageUrl" [alt]="item.product.name" class="item-image">
+                </ion-col>
+                <ion-col size="6">
+                  <ion-text class="item-name">{{ item.product.name }}</ion-text>
+                  <ion-text class="item-size">Size: {{ item.size }}</ion-text>
+                  <ion-text class="item-quantity">Qty: {{ item.quantity }}</ion-text>
+                </ion-col>
+                <ion-col size="3" class="ion-text-right">
+                  <ion-text class="item-price">${{ item.subtotal | number:'1.2-2' }}</ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+
+          <!-- Order Totals -->
+          <div class="order-totals">
+            <div class="total-row">
+              <ion-text>Subtotal</ion-text>
+              <ion-text>${{ cartSubtotal() | number:'1.2-2' }}</ion-text>
+            </div>
+            <div class="total-row">
+              <ion-text>Shipping</ion-text>
+              <ion-text>${{ cartShipping() | number:'1.2-2' }}</ion-text>
+            </div>
+            <div class="total-row">
+              <ion-text>VAT (15%)</ion-text>
+              <ion-text>${{ cartVat() | number:'1.2-2' }}</ion-text>
+            </div>
+            <div class="total-row final-total">
+              <ion-text class="total-label">Total</ion-text>
+              <ion-text class="total-amount">${{ cartTotal() | number:'1.2-2' }}</ion-text>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Place Order Button -->
+      <ion-button
+        expand="block"
+        class="place-order-btn"
+        [disabled]="!isFormValid() || isProcessing()"
+        (click)="onProcessCheckout()">
+        <ion-spinner *ngIf="isProcessing()" name="crescent"></ion-spinner>
+        <ion-icon *ngIf="!isProcessing()" name="checkmark-circle" slot="start"></ion-icon>
+        <span *ngIf="!isProcessing()">Place Order - ${{ cartTotal() | number:'1.2-2' }}</span>
+        <span *ngIf="isProcessing()">Processing Payment...</span>
+      </ion-button>
+    </div>
+
+    <!-- Empty Cart State -->
+    <ng-template #emptyCart>
+      <div class="empty-cart-container">
+        <ion-icon name="card" class="empty-cart-icon"></ion-icon>
+        <ion-text class="empty-cart-title">Your cart is empty</ion-text>
+        <ion-text class="empty-cart-message">Add some items to your cart to proceed with checkout.</ion-text>
+        <ion-button expand="block" class="continue-shopping-btn" (click)="presenter.goBack()">
+          Continue Shopping
+        </ion-button>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>
+

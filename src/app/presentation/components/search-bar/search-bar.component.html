@@ -1,0 +1,26 @@
+<div class="search-container">
+  <div class="search-wrapper">
+    <ion-searchbar
+      [value]="searchTerm()"
+      (ionInput)="onSearchChange($event)"
+      placeholder="Search for clothes..."
+      show-clear-button="focus"
+      class="custom-searchbar">
+    </ion-searchbar>
+
+    <ion-button
+      fill="clear"
+      class="voice-btn"
+      (click)="onVoiceSearch()">
+      <ion-icon name="mic-outline" color="medium"></ion-icon>
+    </ion-button>
+  </div>
+
+  <ion-button
+    fill="solid"
+    class="filter-btn"
+    (click)="onFilterClick()"
+    style="--background: black;">
+    <ion-icon name="options-outline"></ion-icon>
+  </ion-button>
+</div>
