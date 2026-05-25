@@ -1,0 +1,632 @@
+{
+  "generatedAt": "2026-05-25T20:02:11.531Z",
+  "workspace": "/Users/diego/Downloads/proof-mock",
+  "summary": {
+    "packageName": "proof-mock",
+    "version": "0.0.1",
+    "defaultProject": "",
+    "projectCount": 1,
+    "appCount": 1,
+    "libCount": 0,
+    "moduleFederationProjectCount": 0,
+    "totalFilesScanned": 262,
+    "totalTypeScriptFiles": 63,
+    "componentCount": 13,
+    "serviceCount": 0,
+    "routeCount": 1,
+    "manifestCount": 0
+  },
+  "technologies": {
+    "runtime": {
+      "node": "",
+      "npm": "",
+      "typescript": "~5.8.0"
+    },
+    "framework": {
+      "angular": "^20.0.0",
+      "ionic": "^8.0.0",
+      "capacitor": "7.4.3"
+    },
+    "state": {
+      "rxjs": "~7.8.0"
+    },
+    "http": {
+      "angularCommon": "^20.0.0"
+    },
+    "testing": {
+      "karma": "~6.4.0",
+      "jasmine": "~5.1.0"
+    },
+    "uiAndBhd": {},
+    "tooling": {
+      "eslint": "^9.16.0"
+    },
+    "other": {}
+  },
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "lint": "ng lint"
+  },
+  "nx": {
+    "defaultProject": "",
+    "defaultBase": "",
+    "targetDefaults": [],
+    "namedInputs": [],
+    "generators": {}
+  },
+  "tsconfigPaths": {},
+  "manifests": [],
+  "layers": [
+    {
+      "layer": "domain",
+      "files": 17,
+      "projects": [
+        "."
+      ]
+    },
+    {
+      "layer": "infraestructure",
+      "files": 6,
+      "projects": [
+        "."
+      ]
+    },
+    {
+      "layer": "presentation",
+      "files": 44,
+      "projects": [
+        "."
+      ]
+    },
+    {
+      "layer": "store",
+      "files": 6,
+      "projects": [
+        "."
+      ]
+    }
+  ],
+  "architecture": {
+    "detected": [],
+    "hasExplicitArchitecture": false,
+    "recommendations": [
+      {
+        "name": "Modular Layered Architecture",
+        "why": "The project already shows shared/core/data-access/store boundaries, so a lightweight layered model would formalize dependencies without forcing a full rewrite."
+      },
+      {
+        "name": "Clean Architecture for Business-Critical Modules",
+        "why": "Use it selectively where business rules, DTO mapping, repositories, and use cases need framework-independent boundaries."
+      }
+    ]
+  },
+  "projects": [
+    {
+      "name": "app",
+      "root": ".",
+      "type": "application",
+      "sourceRoot": "src",
+      "targets": [
+        "build",
+        "serve",
+        "extract-i18n",
+        "test",
+        "lint"
+      ],
+      "tags": [],
+      "moduleFederation": null,
+      "routes": [
+        {
+          "file": "src/app/app.routes.ts",
+          "entries": [
+            {
+              "path": "/",
+              "component": null,
+              "lazy": true,
+              "redirectTo": "/home",
+              "guarded": false
+            },
+            {
+              "path": "home",
+              "component": null,
+              "lazy": true,
+              "redirectTo": "/home",
+              "guarded": false
+            },
+            {
+              "path": "login",
+              "component": null,
+              "lazy": true,
+              "redirectTo": "/home",
+              "guarded": false
+            },
+            {
+              "path": "products",
+              "component": null,
+              "lazy": true,
+              "redirectTo": null,
+              "guarded": false
+            },
+            {
+              "path": "product/:id",
+              "component": null,
+              "lazy": true,
+              "redirectTo": "/products",
+              "guarded": false
+            },
+            {
+              "path": "cart",
+              "component": null,
+              "lazy": true,
+              "redirectTo": "/products",
+              "guarded": false
+            },
+            {
+              "path": "checkout",
+              "component": null,
+              "lazy": true,
+              "redirectTo": "/products",
+              "guarded": false
+            },
+            {
+              "path": "home",
+              "component": null,
+              "lazy": true,
+              "redirectTo": "/products",
+              "guarded": false
+            },
+            {
+              "path": "search",
+              "component": null,
+              "lazy": true,
+              "redirectTo": "/products",
+              "guarded": false
+            },
+            {
+              "path": "favorites",
+              "component": null,
+              "lazy": true,
+              "redirectTo": "/products",
+              "guarded": false
+            },
+            {
+              "path": "account",
+              "component": null,
+              "lazy": false,
+              "redirectTo": "/products",
+              "guarded": false
+            }
+          ]
+        }
+      ],
+      "components": [
+        {
+          "name": "AppComponent",
+          "selector": "app-root",
+          "standalone": false,
+          "file": "src/app/app.component.ts"
+        },
+        {
+          "name": "BottomNavigationComponent",
+          "selector": "app-bottom-navigation",
+          "standalone": true,
+          "file": "src/app/presentation/components/bottom-navigation/bottom-navigation.component.ts"
+        },
+        {
+          "name": "CategoryFilterComponent",
+          "selector": "app-category-filter",
+          "standalone": true,
+          "file": "src/app/presentation/components/category-filter/category-filter.component.ts"
+        },
+        {
+          "name": "ProductCardComponent",
+          "selector": "app-product-card",
+          "standalone": true,
+          "file": "src/app/presentation/components/product-card/product-card.component.ts"
+        },
+        {
+          "name": "QuantitySelectorComponent",
+          "selector": "app-quantity-selector",
+          "standalone": true,
+          "file": "src/app/presentation/components/quantity-selector/quantity-selector.component.ts"
+        },
+        {
+          "name": "SearchBarComponent",
+          "selector": "app-search-bar",
+          "standalone": true,
+          "file": "src/app/presentation/components/search-bar/search-bar.component.ts"
+        },
+        {
+          "name": "SizeSelectorComponent",
+          "selector": "app-size-selector",
+          "standalone": true,
+          "file": "src/app/presentation/components/size-selector/size-selector.component.ts"
+        },
+        {
+          "name": "CartPage",
+          "selector": "app-cart",
+          "standalone": true,
+          "file": "src/app/presentation/pages/cart/cart.page.ts"
+        },
+        {
+          "name": "CheckoutPage",
+          "selector": "app-checkout",
+          "standalone": true,
+          "file": "src/app/presentation/pages/checkout/checkout.page.ts"
+        },
+        {
+          "name": "LoginPage",
+          "selector": "app-login",
+          "standalone": true,
+          "file": "src/app/presentation/pages/login/login.page.ts"
+        },
+        {
+          "name": "ProductDetailPage",
+          "selector": "app-product-detail",
+          "standalone": true,
+          "file": "src/app/presentation/pages/product-detail/product-detail.page.ts"
+        },
+        {
+          "name": "ProductListPage",
+          "selector": "app-product-list",
+          "standalone": true,
+          "file": "src/app/presentation/pages/product-list/product-list.page.ts"
+        },
+        {
+          "name": "HomePage",
+          "selector": "app-home",
+          "standalone": true,
+          "file": "src/app/presentation/presenters/home/home.page.ts"
+        }
+      ],
+      "importsFromWorkspace": [
+        "@angular/common",
+        "@angular/common/http",
+        "@angular/core",
+        "@angular/core/testing",
+        "@angular/platform-browser",
+        "@angular/platform-browser-dynamic/testing",
+        "@angular/router",
+        "@capacitor/cli",
+        "@ionic/angular",
+        "@ionic/angular/standalone"
+      ],
+      "counts": {
+        "components": 13,
+        "modules": 0,
+        "routes": 1,
+        "services": 0,
+        "useCases": 8,
+        "repositories": 11,
+        "mappers": 0,
+        "entities": 4,
+        "dtos": 0,
+        "specs": 2,
+        "styles": 16,
+        "templates": 15,
+        "storeFiles": 2
+      }
+    }
+  ],
+  "conventions": [
+    "Single-workspace Angular application with primary source code under src/app.",
+    "The infraestructure naming variant exists; preserve this convention where it is already present.",
+    "Routing is separated into *.routes.ts or app-routing.module.ts files.",
+    "Angular/Ionic pages use the *.page.ts suffix.",
+    "Unit tests are colocated with source code using the *.spec.ts suffix."
+  ],
+  "notableSharedLibraries": [
+    {
+      "root": "src/app/presentation",
+      "role": "Shared library or folder"
+    }
+  ],
+  "flows": {
+    "overview": "The application resolves Angular routes and uses lazy loading through loadChildren/loadComponent for routes such as app:/, app:home, app:login, app:products, app:product/:id, app:cart.",
+    "sequenceMermaid": "sequenceDiagram\n  participant User\n  participant app\n  participant Router\n  participant UseCases\n  participant Repositories\n  participant External\n  User->>app: Opens the application\n  app->>Router: Resolves lazy loaded routes (app:/, app:home, app:login, app:products, app:product/:id)\n  Router->>Router: Loads route chunk through loadChildren/loadComponent\n  Router->>UseCases: Executes the active feature use case\n  UseCases->>Repositories: Requests data through repository contracts or adapters\n  Router-->>User: Renders the detected component/page structure",
+    "flowMermaid": "flowchart TD\n  Start[\"Application start\"]\n  Start-->Shell[\"app\"]\n  Shell-->Routes[\"lazy loaded routes (app:/, app:home, app:login, app:products, app:product/:id)\"]\n  Routes-->Route_app[\"app\"]\n  Routes-->Lazy[\"Lazy route chunks via loadChildren/loadComponent\"]\n  Lazy-->Lazy_app_[\"app: /\"]\n  Lazy-->Lazy_apphome[\"app: home\"]\n  Lazy-->Lazy_applogin[\"app: login\"]\n  Lazy-->Lazy_appproducts[\"app: products\"]\n  Lazy-->Lazy_appproduct__id[\"app: product/:id\"]\n  Lazy-->Lazy_appcart[\"app: cart\"]\n  Lazy-->Lazy_appcheckout[\"app: checkout\"]\n  Lazy-->Lazy_apphome[\"app: home\"]\n  Lazy-->Lazy_appsearch[\"app: search\"]\n  Lazy-->Lazy_appfavorites[\"app: favorites\"]\n  Route_app-->Layer_app[\"app: services/use cases/repositories\"]\n  Routes-->Components[\"Components / pages\"]\n  Components-->Business[\"use cases, repositories\"]\n  Business-->External[\"APIs / storage / SDKs\"]",
+    "runtimeSteps": [
+      "The user enters through app, using the detected application or shell bootstrap.",
+      "Routing is resolved through lazy loaded routes (app:/, app:home, app:login, app:products, app:product/:id).",
+      "Lazy loading is explicitly detected through loadChildren/loadComponent in src/app/app.routes.ts, src/app/app.routes.ts, src/app/app.routes.ts, src/app/app.routes.ts, src/app/app.routes.ts, src/app/app.routes.ts.",
+      "No Module Federation remotes were detected for this project.",
+      "Business and data flow uses use cases, repositories.",
+      "External boundaries are inferred from detected service/data-access files and may include APIs, storage, or SDK integrations."
+    ],
+    "viewRouteGroups": [
+      {
+        "project": "app",
+        "routeFile": "src/app/app.routes.ts",
+        "path": "/",
+        "component": null,
+        "lazy": true
+      },
+      {
+        "project": "app",
+        "routeFile": "src/app/app.routes.ts",
+        "path": "home",
+        "component": null,
+        "lazy": true
+      },
+      {
+        "project": "app",
+        "routeFile": "src/app/app.routes.ts",
+        "path": "login",
+        "component": null,
+        "lazy": true
+      },
+      {
+        "project": "app",
+        "routeFile": "src/app/app.routes.ts",
+        "path": "products",
+        "component": null,
+        "lazy": true
+      },
+      {
+        "project": "app",
+        "routeFile": "src/app/app.routes.ts",
+        "path": "product/:id",
+        "component": null,
+        "lazy": true
+      },
+      {
+        "project": "app",
+        "routeFile": "src/app/app.routes.ts",
+        "path": "cart",
+        "component": null,
+        "lazy": true
+      },
+      {
+        "project": "app",
+        "routeFile": "src/app/app.routes.ts",
+        "path": "checkout",
+        "component": null,
+        "lazy": true
+      },
+      {
+        "project": "app",
+        "routeFile": "src/app/app.routes.ts",
+        "path": "home",
+        "component": null,
+        "lazy": true
+      },
+      {
+        "project": "app",
+        "routeFile": "src/app/app.routes.ts",
+        "path": "search",
+        "component": null,
+        "lazy": true
+      },
+      {
+        "project": "app",
+        "routeFile": "src/app/app.routes.ts",
+        "path": "favorites",
+        "component": null,
+        "lazy": true
+      },
+      {
+        "project": "app",
+        "routeFile": "src/app/app.routes.ts",
+        "path": "account",
+        "component": null,
+        "lazy": false
+      }
+    ],
+    "evidenceFiles": [
+      "src/app/app.routes.ts",
+      "src/app/presentation/components/bottom-navigation/bottom-navigation.component.html",
+      "src/app/presentation/components/bottom-navigation/bottom-navigation.component.scss",
+      "src/app/presentation/components/bottom-navigation/bottom-navigation.component.ts"
+    ]
+  },
+  "codegraph": {
+    "available": true,
+    "fallbackUsed": false,
+    "status": "\u001b[1m\nCodeGraph Status\n\u001b[0m\n\u001b[36mProject:\u001b[0m /Users/diego/Downloads/proof-mock\n\n\u001b[1mIndex Statistics:\u001b[0m\n  Files:     63\n  Nodes:     676\n  Edges:     1,172\n  DB Size:   1.42 MB\n  Backend:   \u001b[32mnode:sqlite — built-in (full WAL)\u001b[0m\n  Journal:   \u001b[32mwal\u001b[0m\n\n\u001b[1mNodes by Kind:\u001b[0m\n  method          322\n  import          182\n  file            62\n  function        41\n  class           31\n  constant        19\n  interface       18\n  type_alias      1\n\n\u001b[1mFiles by Language:\u001b[0m\n  typescript      60\n  javascript      2\n  yaml            1\n\n\u001b[32m✓\u001b[0m Index is up to date",
+    "errors": [
+      "error: too many arguments for 'files'. Expected 0 arguments but got 1.\n"
+    ]
+  },
+  "codegraphContext": {
+    "query": "frontend architecture map routes components services conventions technologies",
+    "summary": "Found 5 relevant code symbols across 3 files. Key entry points: routes, router, architectureAssessment. 2 relationships identified.",
+    "entryPoints": [
+      {
+        "id": "constant:9b9e7b3bc2804cb74f2ba0f5c7c62944",
+        "kind": "constant",
+        "name": "routes",
+        "qualifiedName": "routes",
+        "filePath": "src/app/app.routes.ts",
+        "language": "typescript",
+        "startLine": 3,
+        "endLine": 50,
+        "signature": "= [\n  {\n    path: '',\n    redirectTo: '/home',\n    pathMatch: 'full',\n  },\n  {\n    path: 'home',\n    l...",
+        "visibility": null,
+        "isExported": true,
+        "isAsync": false,
+        "isStatic": false
+      },
+      {
+        "id": "method:a762c1abb5c4064d803acee42ee617a0",
+        "kind": "method",
+        "name": "router",
+        "qualifiedName": "BottomNavigationComponent::router",
+        "filePath": "src/app/presentation/components/bottom-navigation/bottom-navigation.component.ts",
+        "language": "typescript",
+        "startLine": 18,
+        "endLine": 18,
+        "visibility": "private",
+        "isExported": false,
+        "isAsync": false,
+        "isStatic": false
+      },
+      {
+        "id": "function:05327a8088e49ce899ea628ac7132139",
+        "kind": "function",
+        "name": "architectureAssessment",
+        "qualifiedName": "architectureAssessment",
+        "filePath": ".agents/skills/frontend-project-preflight/scripts/generate-preflight-map.js",
+        "language": "javascript",
+        "startLine": 383,
+        "endLine": 429,
+        "signature": "(filesRel, projects, technologies, layers, manifests)",
+        "visibility": null,
+        "isExported": false,
+        "isAsync": false,
+        "isStatic": false
+      }
+    ],
+    "nodes": [
+      {
+        "id": "constant:9b9e7b3bc2804cb74f2ba0f5c7c62944",
+        "kind": "constant",
+        "name": "routes",
+        "qualifiedName": "routes",
+        "filePath": "src/app/app.routes.ts",
+        "language": "typescript",
+        "startLine": 3,
+        "endLine": 50,
+        "signature": "= [\n  {\n    path: '',\n    redirectTo: '/home',\n    pathMatch: 'full',\n  },\n  {\n    path: 'home',\n    l...",
+        "visibility": null,
+        "isExported": true,
+        "isAsync": false,
+        "isStatic": false
+      },
+      {
+        "id": "method:a762c1abb5c4064d803acee42ee617a0",
+        "kind": "method",
+        "name": "router",
+        "qualifiedName": "BottomNavigationComponent::router",
+        "filePath": "src/app/presentation/components/bottom-navigation/bottom-navigation.component.ts",
+        "language": "typescript",
+        "startLine": 18,
+        "endLine": 18,
+        "visibility": "private",
+        "isExported": false,
+        "isAsync": false,
+        "isStatic": false
+      },
+      {
+        "id": "function:05327a8088e49ce899ea628ac7132139",
+        "kind": "function",
+        "name": "architectureAssessment",
+        "qualifiedName": "architectureAssessment",
+        "filePath": ".agents/skills/frontend-project-preflight/scripts/generate-preflight-map.js",
+        "language": "javascript",
+        "startLine": 383,
+        "endLine": 429,
+        "signature": "(filesRel, projects, technologies, layers, manifests)",
+        "visibility": null,
+        "isExported": false,
+        "isAsync": false,
+        "isStatic": false
+      },
+      {
+        "id": "class:6f941e93897b310b3b8076c6a74810ff",
+        "kind": "class",
+        "name": "BottomNavigationComponent",
+        "qualifiedName": "BottomNavigationComponent",
+        "filePath": "src/app/presentation/components/bottom-navigation/bottom-navigation.component.ts",
+        "language": "typescript",
+        "startLine": 17,
+        "endLine": 95,
+        "visibility": null,
+        "isExported": true,
+        "isAsync": false,
+        "isStatic": false
+      },
+      {
+        "id": "function:22426ee4925d909e5b7db1fc611fb978",
+        "kind": "function",
+        "name": "buildMap",
+        "qualifiedName": "buildMap",
+        "filePath": ".agents/skills/frontend-project-preflight/scripts/generate-preflight-map.js",
+        "language": "javascript",
+        "startLine": 702,
+        "endLine": 746,
+        "signature": "()",
+        "visibility": null,
+        "isExported": false,
+        "isAsync": false,
+        "isStatic": false
+      }
+    ],
+    "edges": [
+      {
+        "source": "class:6f941e93897b310b3b8076c6a74810ff",
+        "target": "method:a762c1abb5c4064d803acee42ee617a0",
+        "kind": "contains"
+      },
+      {
+        "source": "function:22426ee4925d909e5b7db1fc611fb978",
+        "target": "function:05327a8088e49ce899ea628ac7132139",
+        "kind": "calls",
+        "line": 714,
+        "column": 23
+      }
+    ],
+    "codeBlocks": [
+      {
+        "filePath": "src/app/app.routes.ts",
+        "startLine": 3,
+        "endLine": 50,
+        "language": "typescript",
+        "content": "export const routes: Routes = [\n  {\n    path: '',\n    redirectTo: '/home',\n    pathMatch: 'full',\n  },\n  {\n    path: 'home',\n    loadComponent: () => import('./presentation/pages/product-list/product-list.page').then((m) => m.ProductListPage),\n  },\n  {\n    path: 'login',\n    loadComponent: () => import('./presentation/pages/login/login.page').then((m) => m.LoginPage),\n  },\n  {\n    path: 'products',\n    loadComponent: () => import('./presentation/pages/product-list/product-list.page').then((m) => m.ProductListPage),\n  },\n  {\n    path: 'product/:id',\n    loadComponent: () => import('./presentation/pages/product-detail/product-detail.page').then((m) => m.ProductDetailPage),\n  },\n  {\n    path: 'cart',\n    loadComponent: () => import('./presentation/pages/cart/cart.page').then((m) => m.CartPage),\n  },\n  {\n    path: 'checkout',\n    loadComponent: () => import('./presentation/pages/checkout/checkout.page').then((m) => m.CheckoutPage),\n  },\n  {\n    path: 'home',\n    loadComponent: () => import('./presentation/presenters/home/home.page').then((m) => m.HomePage),\n  },\n  // Placeholder routes for bottom navigation\n  {\n    path: 'search',\n    redirectTo: '/products',\n  },\n  {\n    path: 'favorites',\n    redirectTo: '/products', // TODO: Implement favorites page\n  },\n  {\n    path: 'account',\n    redirectTo: '/home', // TODO: Implement account page\n  },\n];",
+        "nodeName": "routes",
+        "nodeKind": "constant"
+      },
+      {
+        "filePath": "src/app/presentation/components/bottom-navigation/bottom-navigation.component.ts",
+        "startLine": 18,
+        "endLine": 18,
+        "language": "typescript",
+        "content": "  private router = inject(Router);",
+        "nodeName": "router",
+        "nodeKind": "method"
+      },
+      {
+        "filePath": ".agents/skills/frontend-project-preflight/scripts/generate-preflight-map.js",
+        "startLine": 383,
+        "endLine": 429,
+        "language": "javascript",
+        "content": "function architectureAssessment(filesRel, projects, technologies, layers, manifests) {\n  const hasCleanLayers = ['domain', 'application'].every(name => layers.some(layer => layer.layer === name))\n    && layers.some(layer => layer.layer === 'infrastructure' || layer.layer === 'infraestructure')\n    && layers.some(layer => layer.layer === 'presentation');\n  const hasFeatureFolders = filesRel.some(file => /(^|\\/)(features?|modules?)\\//.test(file)) || projects.some(project => /feature/.test(project.root));\n  const hasAppsAndLibs = projects.some(project => project.root.startsWith('apps/')) && projects.some(project => project.root.startsWith('libs/'));\n  const hasLayerFolders = layers.some(layer => ['core', 'shared', 'data-access', 'store'].includes(layer.layer));\n  const hasModuleFederation = manifests.length || filesRel.some(file => file.includes('module-federation'));\n  const detected = [];\n\n  if (hasCleanLayers) detected.push({ name: 'Clean Architecture', reason: 'The repository contains domain, application, infrastructure, and presentation-style folders.' });\n  if (hasModuleFederation) detected.push({ name: 'Micro Frontend Architecture', reason: 'Module Federation configuration or remote manifests were detected.' });\n  if (hasAppsAndLibs) detected.push({ name: 'Modular Monorepo', reason: 'The workspace separates applications under apps/ and shared libraries under libs/.' });\n  if (hasFeatureFolders) detected.push({ name: 'Feature-based Architecture', reason: 'Feature or module\n... (truncated) ...",
+        "nodeName": "architectureAssessment",
+        "nodeKind": "function"
+      },
+      {
+        "filePath": ".agents/skills/frontend-project-preflight/scripts/generate-preflight-map.js",
+        "startLine": 702,
+        "endLine": 746,
+        "language": "javascript",
+        "content": "function buildMap() {\n  const packageJson = readJson(abs('package.json')) || {};\n  const nx = readJson(abs('nx.json')) || {};\n  const tsconfig = readJson(abs('tsconfig.base.json')) || readJson(abs('tsconfig.json')) || {};\n  const files = walk(projectPath).map(rel);\n  const rawProjects = discoverProjects(files.map(abs));\n  const projects = buildProjects(rawProjects, files);\n  const manifests = loadManifests(files);\n  const technologies = detectTechnologies(packageJson);\n  const layers = layerInventory(files, rawProjects);\n  const conventions = detectConventions(files, rawProjects, technologies, layers);\n  const flows = buildFlows(projects, files, manifests);\n  const architecture = architectureAssessment(files, rawProjects, technologies, layers, manifests);\n  const codegraph = codegraphData();\n\n  return {\n    generatedAt: new Date().toISOString(),\n    workspace: projectPath,\n    summary: buildSummary(packageJson, projects, files, manifests),\n    technologies,\n    scripts: packageJson.scripts || {},\n    nx: {\n      defaultProject: nx.defaultProject || '',\n      defaultBase: nx.defaultBase || '',\n      targetDefaults: Object.keys(nx.targetDefaults || {}),\n      namedInputs: Object.keys(nx.namedInputs || {}),\n      generators: nx.generators || {}\n    },\n    tsconfigPaths: tsconfig.compilerOptions?.paths || {},\n    manifests,\n    layers,\n    architecture,\n    projects,\n    conventions,\n    notableSharedLibraries: notableSharedLibraries(rawProjects, files),\n    flows,\n    codegraph:\n... (truncated) ...",
+        "nodeName": "buildMap",
+        "nodeKind": "function"
+      },
+      {
+        "filePath": "src/app/presentation/components/bottom-navigation/bottom-navigation.component.ts",
+        "startLine": 17,
+        "endLine": 95,
+        "language": "typescript",
+        "content": "export class BottomNavigationComponent {\n  private router = inject(Router);\n\n  activeTab = signal('home');\n\n  tabs = [\n    {\n      key: 'home',\n      label: 'Home',\n      icon: 'home-outline',\n      activeIcon: 'home',\n      route: '/home'\n    },\n    {\n      key: 'search',\n      label: 'Search',\n      icon: 'search-outline',\n      activeIcon: 'search',\n      route: '/products'\n    },\n    {\n      key: 'saved',\n      label: 'Saved',\n      icon: 'heart-outline',\n      activeIcon: 'heart',\n      route: '/favorites'\n    },\n    {\n      key: 'cart',\n      label: 'Cart',\n      icon: 'bag-outline',\n      activeIcon: 'bag',\n      route: '/cart'\n    },\n    {\n      key: 'account',\n      label: 'Account',\n      icon: 'person-outline',\n      activeIcon: 'person',\n      route: '/login'\n    }\n  ];\n\n  constructor() {\n    addIcons({\n      home, homeOutline,\n      search, searchOutline,\n      heart, heartOutline,\n      bag, bagOutline,\n      person, personOutline\n    });\n\n    // Listen to route changes to update active tab\n    this.router.events\n      .pipe(filter(event => event instanceof NavigationEnd))\n      .subscribe((event: NavigationEnd) => {\n        this.updateActiveTab(event.url);\n      });\n\n    // Set initial active tab\n    this.updateActiveTab(this.router.url);\n  }\n\n  private updateActiveTab(url: string) {\n    const tab = this.tabs.find(t => url.startsWith(t.route));\n    if (tab) {\n      this.activeTab.set(tab.key);\n    }\n  }\n\n  onTabClick(tab: any) {\n    this.activeTab.set(tab.key);\n... (truncated) ...",
+        "nodeName": "BottomNavigationComponent",
+        "nodeKind": "class"
+      }
+    ],
+    "relatedFiles": [
+      ".agents/skills/frontend-project-preflight/scripts/generate-preflight-map.js",
+      "src/app/app.routes.ts",
+      "src/app/presentation/components/bottom-navigation/bottom-navigation.component.ts"
+    ],
+    "stats": {
+      "nodeCount": 5,
+      "edgeCount": 2,
+      "fileCount": 3,
+      "codeBlockCount": 5,
+      "totalCodeSize": 5957
+    }
+  }
+}
