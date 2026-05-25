@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--min-height: 66px;">
+    <ion-title class="page-title">Discover</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="notifications-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="--background: white;">
+  <!-- Search Bar -->
+  <app-search-bar
+    (searchChange)="onSearchChange($event)"
+    (filterClick)="onFilterClick()">
+  </app-search-bar>
+
+  <!-- Category Filter -->
+  <app-category-filter
+    (categoryChange)="onCategoryChange($event)">
+  </app-category-filter>
+
+  <!-- Loading State -->
+  <div *ngIf="loading()" class="loading-container">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+    <ion-text color="medium">Loading products...</ion-text>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error() && !loading()" class="error-container">
+    <ion-text color="danger">{{ error() }}</ion-text>
+    <ion-button fill="outline" (click)="presenter.loadProducts()">
+      Try Again
+    </ion-button>
+  </div>
+
+  <!-- Products Grid -->
+  <div *ngIf="!loading() && !error()" class="products-container">
+    <ion-grid class="products-grid">
+      <ion-row>
+        <ion-col
+          *ngFor="let product of filteredProducts()"
+          size="6"
+          size-md="4"
+          size-lg="3">
+          <app-product-card
+            [product]="product"
+            (cardClick)="onProductClick($event)"
+            (favoriteToggle)="onProductFavorite($event)">
+          </app-product-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- Empty State -->
+    <div *ngIf="!hasProducts()" class="empty-state">
+      <ion-text color="medium">
+        <h3>No products found</h3>
+        <p>Try adjusting your search or category filter</p>
+      </ion-text>
+    </div>
+  </div>
+
+  <!-- Bottom spacing for navigation -->
+  <div class="bottom-spacing"></div>
+</ion-content>
+
+<!-- Bottom Navigation -->
+<app-bottom-navigation></app-bottom-navigation>

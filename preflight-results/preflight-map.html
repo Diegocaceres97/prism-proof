@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Frontend Architecture Preflight Map</title>
+  <style>
+    body{font-family:Arial,sans-serif;margin:0;color:#17202a;background:#f6f8fa}
+    header{background:#102a43;color:white;padding:28px 36px}
+    main{padding:24px 36px;max-width:1500px;margin:auto}
+    section{background:white;border:1px solid #d8dee4;border-radius:8px;padding:18px;margin:16px 0}
+    h1,h2,h3{margin:0 0 12px}
+    table{border-collapse:collapse;width:100%;font-size:13px}
+    th,td{border:1px solid #d8dee4;padding:8px;vertical-align:top}
+    th{background:#eef2f6;text-align:left}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+    .card{border:1px solid #d8dee4;border-radius:8px;padding:14px;background:#fbfcfd}
+    .pill{display:inline-block;border:1px solid #c9d1d9;border-radius:999px;padding:2px 8px;margin:2px;background:#f6f8fa;font-size:12px}
+    code,pre{background:#f6f8fa;border-radius:6px}
+    pre{padding:12px;overflow:auto}
+    .toc a{display:inline-block;margin:4px 10px 4px 0;color:#0969da}
+  </style>
+</head>
+<body>
+<header>
+  <h1>Frontend Architecture Preflight Map</h1>
+  <p>/Users/diego/Downloads/proof-mock</p>
+  <p>Generated: 2026-05-25T20:02:11.531Z | CodeGraph: available</p>
+</header>
+<main>
+  <section class="grid">
+    <div class="card"><h2>1</h2><p>Projects</p></div>
+    <div class="card"><h2>1</h2><p>Applications</p></div>
+    <div class="card"><h2>0</h2><p>Libraries</p></div>
+    <div class="card"><h2>13</h2><p>Components / Pages</p></div>
+    <div class="card"><h2>0</h2><p>Services</p></div>
+    <div class="card"><h2>63</h2><p>TypeScript files</p></div>
+  </section>
+  <section class="toc">
+    <h2>Contents</h2>
+    <a href="#tech">Technology</a><a href="#conventions">Conventions</a><a href="#projects">Projects</a><a href="#flow">Runtime Flow</a><a href="#routes">Routes</a><a href="#components">Components</a><a href="#layers">Layers</a><a href="#mf">Module Federation</a><a href="#architecture-recommendations">Suggested Architecture</a>
+  </section>
+  <section id="tech">
+    <h2>Technology</h2>
+    <table><tr><th>Area</th><th>Packages</th></tr>
+      <tr><td>runtime</td><td><span class="pill">node </span> <span class="pill">npm </span> <span class="pill">typescript ~5.8.0</span></td></tr><tr><td>framework</td><td><span class="pill">angular ^20.0.0</span> <span class="pill">ionic ^8.0.0</span> <span class="pill">capacitor 7.4.3</span></td></tr><tr><td>state</td><td><span class="pill">rxjs ~7.8.0</span></td></tr><tr><td>http</td><td><span class="pill">angularCommon ^20.0.0</span></td></tr><tr><td>testing</td><td><span class="pill">karma ~6.4.0</span> <span class="pill">jasmine ~5.1.0</span></td></tr><tr><td>uiAndBhd</td><td></td></tr><tr><td>tooling</td><td><span class="pill">eslint ^9.16.0</span></td></tr><tr><td>other</td><td></td></tr>
+    </table>
+  </section>
+  <section id="conventions"><h2>Detected Conventions</h2><ul><li>Single-workspace Angular application with primary source code under src/app.</li><li>The infraestructure naming variant exists; preserve this convention where it is already present.</li><li>Routing is separated into *.routes.ts or app-routing.module.ts files.</li><li>Angular/Ionic pages use the *.page.ts suffix.</li><li>Unit tests are colocated with source code using the *.spec.ts suffix.</li></ul></section>
+  <section id="projects"><h2>Projects</h2><table><tr><th>Project</th><th>Type</th><th>Module Federation</th><th>Inventory</th><th>Workspace imports</th></tr>
+    <tr>
+      <td><b>app</b><br><small>.</small></td>
+      <td>application</td>
+      <td>-</td>
+      <td><span class="pill">components 13</span> <span class="pill">routes 1</span> <span class="pill">useCases 8</span> <span class="pill">repositories 11</span> <span class="pill">entities 4</span> <span class="pill">specs 2</span> <span class="pill">styles 16</span> <span class="pill">templates 15</span> <span class="pill">storeFiles 2</span></td>
+      <td><span class="pill">@angular/common</span> <span class="pill">@angular/common/http</span> <span class="pill">@angular/core</span> <span class="pill">@angular/core/testing</span> <span class="pill">@angular/platform-browser</span> <span class="pill">@angular/platform-browser-dynamic/testing</span> <span class="pill">@angular/router</span> <span class="pill">@capacitor/cli</span> <span class="pill">@ionic/angular</span> <span class="pill">@ionic/angular/standalone</span></td>
+    </tr></table></section>
+  <section id="flow">
+    <h2>Runtime Flow</h2>
+    <p>The application resolves Angular routes and uses lazy loading through loadChildren/loadComponent for routes such as app:/, app:home, app:login, app:products, app:product/:id, app:cart.</p>
+    <h3>Steps</h3><ol><li>The user enters through app, using the detected application or shell bootstrap.</li><li>Routing is resolved through lazy loaded routes (app:/, app:home, app:login, app:products, app:product/:id).</li><li>Lazy loading is explicitly detected through loadChildren/loadComponent in src/app/app.routes.ts, src/app/app.routes.ts, src/app/app.routes.ts, src/app/app.routes.ts, src/app/app.routes.ts, src/app/app.routes.ts.</li><li>No Module Federation remotes were detected for this project.</li><li>Business and data flow uses use cases, repositories.</li><li>External boundaries are inferred from detected service/data-access files and may include APIs, storage, or SDK integrations.</li></ol>
+    <h3>Sequence diagram</h3><pre class="mermaid">sequenceDiagram
+  participant User
+  participant app
+  participant Router
+  participant UseCases
+  participant Repositories
+  participant External
+  User-&gt;&gt;app: Opens the application
+  app-&gt;&gt;Router: Resolves lazy loaded routes (app:/, app:home, app:login, app:products, app:product/:id)
+  Router-&gt;&gt;Router: Loads route chunk through loadChildren/loadComponent
+  Router-&gt;&gt;UseCases: Executes the active feature use case
+  UseCases-&gt;&gt;Repositories: Requests data through repository contracts or adapters
+  Router--&gt;&gt;User: Renders the detected component/page structure</pre>
+    <h3>Flow diagram</h3><pre class="mermaid">flowchart TD
+  Start[&quot;Application start&quot;]
+  Start--&gt;Shell[&quot;app&quot;]
+  Shell--&gt;Routes[&quot;lazy loaded routes (app:/, app:home, app:login, app:products, app:product/:id)&quot;]
+  Routes--&gt;Route_app[&quot;app&quot;]
+  Routes--&gt;Lazy[&quot;Lazy route chunks via loadChildren/loadComponent&quot;]
+  Lazy--&gt;Lazy_app_[&quot;app: /&quot;]
+  Lazy--&gt;Lazy_apphome[&quot;app: home&quot;]
+  Lazy--&gt;Lazy_applogin[&quot;app: login&quot;]
+  Lazy--&gt;Lazy_appproducts[&quot;app: products&quot;]
+  Lazy--&gt;Lazy_appproduct__id[&quot;app: product/:id&quot;]
+  Lazy--&gt;Lazy_appcart[&quot;app: cart&quot;]
+  Lazy--&gt;Lazy_appcheckout[&quot;app: checkout&quot;]
+  Lazy--&gt;Lazy_apphome[&quot;app: home&quot;]
+  Lazy--&gt;Lazy_appsearch[&quot;app: search&quot;]
+  Lazy--&gt;Lazy_appfavorites[&quot;app: favorites&quot;]
+  Route_app--&gt;Layer_app[&quot;app: services/use cases/repositories&quot;]
+  Routes--&gt;Components[&quot;Components / pages&quot;]
+  Components--&gt;Business[&quot;use cases, repositories&quot;]
+  Business--&gt;External[&quot;APIs / storage / SDKs&quot;]</pre>
+    <h3>Evidence</h3><ul><li><code>src/app/app.routes.ts</code></li><li><code>src/app/presentation/components/bottom-navigation/bottom-navigation.component.html</code></li><li><code>src/app/presentation/components/bottom-navigation/bottom-navigation.component.scss</code></li><li><code>src/app/presentation/components/bottom-navigation/bottom-navigation.component.ts</code></li></ul>
+  </section>
+  <section id="routes"><h2>Routes and Lazy Loading</h2><table><tr><th>Project</th><th>File</th><th>Path</th><th>Component</th><th>Lazy</th><th>Guarded</th></tr>
+        <tr><td>app</td><td><code>src/app/app.routes.ts</code></td><td>/</td><td>-</td><td>yes</td><td>no</td></tr>
+      
+        <tr><td>app</td><td><code>src/app/app.routes.ts</code></td><td>home</td><td>-</td><td>yes</td><td>no</td></tr>
+      
+        <tr><td>app</td><td><code>src/app/app.routes.ts</code></td><td>login</td><td>-</td><td>yes</td><td>no</td></tr>
+      
+        <tr><td>app</td><td><code>src/app/app.routes.ts</code></td><td>products</td><td>-</td><td>yes</td><td>no</td></tr>
+      
+        <tr><td>app</td><td><code>src/app/app.routes.ts</code></td><td>product/:id</td><td>-</td><td>yes</td><td>no</td></tr>
+      
+        <tr><td>app</td><td><code>src/app/app.routes.ts</code></td><td>cart</td><td>-</td><td>yes</td><td>no</td></tr>
+      
+        <tr><td>app</td><td><code>src/app/app.routes.ts</code></td><td>checkout</td><td>-</td><td>yes</td><td>no</td></tr>
+      
+        <tr><td>app</td><td><code>src/app/app.routes.ts</code></td><td>home</td><td>-</td><td>yes</td><td>no</td></tr>
+      
+        <tr><td>app</td><td><code>src/app/app.routes.ts</code></td><td>search</td><td>-</td><td>yes</td><td>no</td></tr>
+      
+        <tr><td>app</td><td><code>src/app/app.routes.ts</code></td><td>favorites</td><td>-</td><td>yes</td><td>no</td></tr>
+      
+        <tr><td>app</td><td><code>src/app/app.routes.ts</code></td><td>account</td><td>-</td><td>no</td><td>no</td></tr>
+      </table></section>
+  <section id="components"><h2>Main Components and Pages</h2>
+      <h3>app</h3>
+      <table><tr><th>Name</th><th>Selector</th><th>Standalone</th><th>File</th></tr>
+      
+        <tr><td>AppComponent</td><td>app-root</td><td>no</td><td><code>src/app/app.component.ts</code></td></tr>
+      
+        <tr><td>BottomNavigationComponent</td><td>app-bottom-navigation</td><td>yes</td><td><code>src/app/presentation/components/bottom-navigation/bottom-navigation.component.ts</code></td></tr>
+      
+        <tr><td>CategoryFilterComponent</td><td>app-category-filter</td><td>yes</td><td><code>src/app/presentation/components/category-filter/category-filter.component.ts</code></td></tr>
+      
+        <tr><td>ProductCardComponent</td><td>app-product-card</td><td>yes</td><td><code>src/app/presentation/components/product-card/product-card.component.ts</code></td></tr>
+      
+        <tr><td>QuantitySelectorComponent</td><td>app-quantity-selector</td><td>yes</td><td><code>src/app/presentation/components/quantity-selector/quantity-selector.component.ts</code></td></tr>
+      
+        <tr><td>SearchBarComponent</td><td>app-search-bar</td><td>yes</td><td><code>src/app/presentation/components/search-bar/search-bar.component.ts</code></td></tr>
+      
+        <tr><td>SizeSelectorComponent</td><td>app-size-selector</td><td>yes</td><td><code>src/app/presentation/components/size-selector/size-selector.component.ts</code></td></tr>
+      
+        <tr><td>CartPage</td><td>app-cart</td><td>yes</td><td><code>src/app/presentation/pages/cart/cart.page.ts</code></td></tr>
+      
+        <tr><td>CheckoutPage</td><td>app-checkout</td><td>yes</td><td><code>src/app/presentation/pages/checkout/checkout.page.ts</code></td></tr>
+      
+        <tr><td>LoginPage</td><td>app-login</td><td>yes</td><td><code>src/app/presentation/pages/login/login.page.ts</code></td></tr>
+      
+        <tr><td>ProductDetailPage</td><td>app-product-detail</td><td>yes</td><td><code>src/app/presentation/pages/product-detail/product-detail.page.ts</code></td></tr>
+      
+        <tr><td>ProductListPage</td><td>app-product-list</td><td>yes</td><td><code>src/app/presentation/pages/product-list/product-list.page.ts</code></td></tr>
+      
+        <tr><td>HomePage</td><td>app-home</td><td>yes</td><td><code>src/app/presentation/presenters/home/home.page.ts</code></td></tr>
+      
+      </table>
+    </section>
+  <section id="layers"><h2>Architecture Layers</h2><table><tr><th>Layer</th><th>Files</th><th>Projects</th></tr>
+    <tr><td>domain</td><td>17</td><td><span class="pill">.</span></td></tr>
+  
+    <tr><td>infraestructure</td><td>6</td><td><span class="pill">.</span></td></tr>
+  
+    <tr><td>presentation</td><td>44</td><td><span class="pill">.</span></td></tr>
+  
+    <tr><td>store</td><td>6</td><td><span class="pill">.</span></td></tr>
+  </table></section>
+  <section><h2>Detected Architecture Signals</h2><table><tr><th>Pattern</th><th>Evidence</th></tr><tr><td colspan="2">No explicit architecture pattern detected.</td></tr></table></section>
+  <section id="mf"><h2>Module Federation Manifests</h2><p>N/A</p></section>
+  <section><h2>Notable Shared Libraries / Folders</h2><table><tr><th>Root</th><th>Inferred role</th></tr><tr><td><code>src/app/presentation</code></td><td>Shared library or folder</td></tr></table></section>
+  <section id="architecture-recommendations"><h2>Suggested Architecture</h2>
+        <p>No explicit architecture pattern was detected with enough evidence. Based on the project structure, these options could fit:</p>
+        <table><tr><th>Architecture</th><th>Why it could apply</th></tr>
+    <tr><td>Modular Layered Architecture</td><td>The project already shows shared/core/data-access/store boundaries, so a lightweight layered model would formalize dependencies without forcing a full rewrite.</td></tr>
+  
+    <tr><td>Clean Architecture for Business-Critical Modules</td><td>Use it selectively where business rules, DTO mapping, repositories, and use cases need framework-independent boundaries.</td></tr>
+  </table>
+      </section>
+</main>
+<script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"; mermaid.initialize({startOnLoad:true,theme:"default"});</script>
+</body>
+</html>

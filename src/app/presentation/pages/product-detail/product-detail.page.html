@@ -1,0 +1,123 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="onGoBack()">
+        <ion-icon name="chevron-back" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="notifications-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Loading State -->
+  <div *ngIf="loading()" class="loading-container">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+    <ion-text color="medium">Loading product...</ion-text>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error() && !loading()" class="error-container">
+    <ion-text color="danger">{{ error() }}</ion-text>
+    <ion-button fill="outline" (click)="presenter.loadProduct(route.snapshot.params['id'])">
+      Try Again
+    </ion-button>
+  </div>
+
+  <!-- Product Detail Content -->
+  <div *ngIf="product() && !loading() && !error()" class="product-detail">
+    <!-- Product Image -->
+    <div class="product-image-container">
+      <img
+        [src]="product()?.imageUrl"
+        [alt]="product()?.name"
+        class="product-image"
+        loading="lazy">
+
+      <button class="favorite-btn">
+        <ion-icon name="heart-outline" color="medium"></ion-icon>
+      </button>
+
+      <ion-chip
+        *ngIf="product()?.discount"
+        class="discount-chip"
+        color="danger">
+        -{{ product()?.discount }}%
+      </ion-chip>
+    </div>
+
+    <!-- Product Info -->
+    <div class="product-info">
+      <div class="product-header">
+        <h1 class="product-name">{{ product()?.name }}</h1>
+        <div class="rating-section">
+          <div class="rating">
+            <ion-icon name="star" color="warning"></ion-icon>
+            <span>{{ product()?.rating | number:'1.1-1' }}/5</span>
+          </div>
+          <span class="review-count">({{ product()?.reviewCount }} reviews)</span>
+        </div>
+      </div>
+
+      <div class="price-section">
+        <span class="current-price">${{ product()?.price | number:'1.2-2' }}</span>
+        <span
+          *ngIf="product()?.originalPrice"
+          class="original-price">
+          ${{ product()?.originalPrice | number:'1.2-2' }}
+        </span>
+      </div>
+
+      <p class="product-description">{{ product()?.description }}</p>
+
+      <!-- Size Selector -->
+      <app-size-selector
+        [sizes]="availableSizes()"
+        (sizeChange)="onSizeSelect($event)">
+      </app-size-selector>
+
+      <!-- Quantity Selector -->
+      <app-quantity-selector
+        [minQuantity]="1"
+        [maxQuantity]="10"
+        (quantityChange)="onQuantityChange($event)">
+      </app-quantity-selector>
+
+      <!-- Add to Cart Button -->
+      <ion-button
+        expand="block"
+        class="add-to-cart-btn"
+        [disabled]="!canAddToCart()"
+        (click)="onAddToCart()">
+        Add to Cart - ${{ totalPrice() | number:'1.2-2' }}
+      </ion-button>
+
+      <!-- Product Features -->
+      <div class="product-features">
+        <div class="feature-item">
+          <ion-icon name="checkmark-circle" color="success"></ion-icon>
+          <span>Free shipping on orders over $50</span>
+        </div>
+        <div class="feature-item">
+          <ion-icon name="return-up-back" color="primary"></ion-icon>
+          <span>30-day return policy</span>
+        </div>
+        <div class="feature-item">
+          <ion-icon name="shield-checkmark" color="warning"></ion-icon>
+          <span>Secure payment</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom spacing for navigation -->
+  <div class="bottom-spacing"></div>
+</ion-content>
+
+<!-- Bottom Navigation -->
+<app-bottom-navigation></app-bottom-navigation>

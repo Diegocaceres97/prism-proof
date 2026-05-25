@@ -1,0 +1,74 @@
+.bottom-navigation {
+  --background: white;
+  --border: 1px solid var(--ion-color-light-shade);
+  box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.1);
+  height: 60px;
+
+  ion-tab-button {
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+    --color: var(--ion-color-medium);
+    --color-selected: var(--ion-color-primary);
+    transition: all 0.3s ease;
+
+    &.active {
+      transform: translateY(-2px);
+
+      ion-icon {
+        transform: scale(1.1);
+      }
+    }
+
+    ion-icon {
+      font-size: 24px;
+      margin-bottom: 2px;
+      transition: transform 0.3s ease;
+    }
+
+    ion-label {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .bottom-navigation {
+    --background: var(--ion-color-dark);
+    --border: 1px solid var(--ion-color-dark-shade);
+  }
+}
+
+// Safe area support for devices with home indicator
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .bottom-navigation {
+    padding-bottom: env(safe-area-inset-bottom);
+    height: calc(60px + env(safe-area-inset-bottom));
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .bottom-navigation {
+    height: 56px;
+
+    ion-tab-button {
+      ion-icon {
+        font-size: 22px;
+      }
+
+      ion-label {
+        font-size: 9px;
+      }
+    }
+  }
+
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .bottom-navigation {
+      height: calc(56px + env(safe-area-inset-bottom));
+    }
+  }
+}

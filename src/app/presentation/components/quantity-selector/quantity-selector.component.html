@@ -1,0 +1,22 @@
+<div class="quantity-selector">
+  <h4 class="quantity-label">Quantity</h4>
+  <div class="quantity-controls">
+    <ion-button
+      fill="outline"
+      class="quantity-btn decrease"
+      [disabled]="!canDecrease()"
+      (click)="onDecrease()">
+      <ion-icon name="remove"></ion-icon>
+    </ion-button>
+
+    <span class="quantity-value">{{ quantity() }}</span>
+
+    <ion-button
+      fill="outline"
+      class="quantity-btn increase"
+      [disabled]="!canIncrease()"
+      (click)="onIncrease()">
+      <ion-icon name="add"></ion-icon>
+    </ion-button>
+  </div>
+</div>

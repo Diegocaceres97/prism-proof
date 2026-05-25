@@ -1,0 +1,84 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: white;
+}
+
+.search-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.custom-searchbar {
+  flex: 1;
+  --background: transparent;
+  --border-radius: 0;
+  --box-shadow: none;
+  --placeholder-color: var(--ion-color-medium);
+  --color: var(--ion-color-dark);
+
+  .searchbar-input-container {
+    border: none !important;
+  }
+}
+
+.voice-btn {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  margin: 0;
+
+  ion-icon {
+    font-size: 20px;
+  }
+}
+
+.filter-btn {
+  --border-radius: 12px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  height: 44px;
+  min-width: 44px;
+
+
+  ion-icon {
+    font-size: 20px;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .search-wrapper {
+    background: var(--ion-color-dark);
+  }
+
+  .custom-searchbar {
+    --placeholder-color: var(--ion-color-medium);
+    --color: var(--ion-color-light);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .search-container {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .filter-btn {
+    --padding-start: 8px;
+    --padding-end: 8px;
+    min-width: 40px;
+    height: 40px;
+
+    ion-icon {
+      font-size: 18px;
+    }
+  }
+}

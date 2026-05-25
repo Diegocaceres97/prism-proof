@@ -95,12 +95,12 @@ paths:
                   name: Running Shoes
                   price: 89.99
                   description: Lightweight running shoes for daily training
-                  imageUrl: https://cdn.example.com/images/prod-1.png
+                  imageUrl: https://images.pexels.com/photos/5872357/pexels-photo-5872357.jpeg
                 - id: prod-2
                   name: Wireless Headphones
                   price: 129.5
                   description: Noise-cancelling over-ear headphones
-                  imageUrl: https://cdn.example.com/images/prod-2.png
+                  imageUrl: https://images.pexels.com/photos/5872357/pexels-photo-5872357.jpeg
         '401':
           description: No autorizado
           content:
@@ -134,7 +134,7 @@ paths:
                 name: Running Shoes
                 price: 89.99
                 description: Lightweight running shoes for daily training
-                imageUrl: https://cdn.example.com/images/prod-1.png
+                imageUrl: https://images.pexels.com/photos/5872357/pexels-photo-5872357.jpeg
         '401':
           description: No autorizado
           content:
@@ -421,7 +421,7 @@ components:
         imageUrl:
           type: string
           format: uri
-          example: https://cdn.example.com/images/prod-1.png
+          example: https://images.pexels.com/photos/5872357/pexels-photo-5872357.jpeg
 
     CartItem:
       type: object

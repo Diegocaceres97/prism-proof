@@ -1,0 +1,74 @@
+.size-selector {
+  margin: 16px 0;
+}
+
+.size-label {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: var(--ion-color-dark);
+}
+
+.size-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.size-button {
+  --border-radius: 8px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --background: var(--ion-color-light);
+  --color: var(--ion-color-dark);
+  --border: 1px solid var(--ion-color-light-shade);
+  min-width: 48px;
+  height: 48px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &.selected {
+    --background: #000000;
+    --color: white;
+    --border: 1px solid #000000;
+    transform: scale(1.05);
+  }
+
+  &:hover:not(.selected) {
+    --background: var(--ion-color-light-shade);
+    transform: scale(1.02);
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .size-label {
+    color: var(--ion-color-light);
+  }
+
+  .size-button {
+    --background: var(--ion-color-dark);
+    --color: var(--ion-color-light);
+    --border: 1px solid var(--ion-color-dark-shade);
+
+    &:hover:not(.selected) {
+      --background: var(--ion-color-dark-shade);
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .size-buttons {
+    gap: 6px;
+  }
+
+  .size-button {
+    min-width: 44px;
+    height: 44px;
+    --padding-start: 12px;
+    --padding-end: 12px;
+  }
+}

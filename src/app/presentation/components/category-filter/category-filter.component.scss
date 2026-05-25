@@ -1,0 +1,69 @@
+.category-filter-container {
+  padding: 0 16px 16px 16px;
+  background: white;
+}
+
+.category-segment {
+  --background: white;
+  --border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.category-button {
+  --color: var(--ion-color-medium);
+  --color-checked: black;
+  --border-radius: 8px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --transition: all 0.3s ease;
+  margin: 4px;
+  font-weight: 500;
+
+  ion-label {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &.segment-button-checked {
+    transform: scale(1.02);
+    border: 1px solid black;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .category-segment {
+    --background: var(--ion-color-dark);
+  }
+
+  .category-button {
+    --color: var(--ion-color-light);
+    --color-checked: var(--ion-color-dark);
+    --background-checked: var(--ion-color-light);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .category-filter-container {
+    padding: 0 12px 12px 12px;
+  }
+
+  .category-button {
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+
+    ion-label {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .category-button {
+    ion-label {
+      font-size: 11px;
+    }
+  }
+}
